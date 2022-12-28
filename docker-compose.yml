@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  api:
+    build: "./api"
+    container_name: climatempo-api
+    restart: always
+    volumes:
+      - ./api:/home/node/app
+    ports:
+      - "4000:4000"
+  app:
+    build: "./app"
+    container_name: climatempo-app
+    restart: always
+    volumes:
+      - ./website:/var/www/html
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api

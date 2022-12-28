@@ -1,7 +1,7 @@
 FROM node:alpine
-WORKDIR /api
-COPY ./ /api
-RUN cd /api
+WORKDIR /app
+COPY ./ /app
+RUN cd /app
 RUN npm install   
-EXPOSE 4000
+EXPOSE 3000
 CMD ["npm", "start"]
