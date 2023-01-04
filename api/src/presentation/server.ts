@@ -8,7 +8,7 @@ const server = express();
 server.use(express.json());
 server.use(routers);
 
-server.listen(process.env.HTTP_PORT || 4002, () => {
+server.listen(process.env.HTTP_PORT || 8082, () => {
   mongoose.connect(process.env.MONGO_URL || "mongodb://root:root@localhost:27017/climatempo_db?authSource=admin").then((connection:Mongoose) => {
     populate(connection);
   }).catch(error => {
