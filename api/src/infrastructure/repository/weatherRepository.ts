@@ -5,11 +5,15 @@ import { IWeatherRepository } from "../../domain/repository/iweatherRepository";
 export class WeatherRepository implements IWeatherRepository {
     
     public async findByLocale(localeName: string): Promise<Weather[]> {
-      const weathers:Weather[] = await WeatherMethods.find({ 'locale.nome':localeName });
-      return weathers;
+        try {
+            const weathers:Weather[] =  await  WeatherMethods.find({'locale.name': localeName});
+            return weathers;
+        } catch (error) {
+            console.log(error);   
+        }
     }
-    public async findByDate(dateStart: Date, dateEnd: Date): Promise<Weather[]> {
-        const weathers:Weather[] = await WeatherMethods.find({ 'period.begin':{$gt: dateStart }, 'period.end':{$lt: dateEnd}});
+    public async findByDate(dateStart: string, dateEnd: string): Promise<Weather[]> {
+        const weathers:Weather[] = await WeatherMethods.find({ 'period.begin':{$gte: dateStart }, 'period.end':{$lte: dateEnd}});
         return weathers;
     }
 

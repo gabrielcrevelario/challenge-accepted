@@ -1,26 +1,37 @@
 version: "3.7"
 services:
-  elasticsearch:
-    container_name: es-container
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
-    environment:
-      - xpack.security.enabled=false
-      - "discovery.type=single-node"
-    networks:
-      - es-net
+  mongo:
+    container_name: climatempo_mongo
+    image: mongo:latest
+    restart: always
     ports:
-      - 9200:9200
-  kibana:
-    container_name: kb-container
-    image: docker.elastic.co/kibana/kibana:7.11.0
+     - "27017:27017"
     environment:
-      - ELASTICSEARCH_HOSTS=http://es-container:9200
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: climatempo_db
+    volumes:
+      - ./mongo-entrypoint:/docker-entrypoint-initdb.d
+      - mongodb:/data/db
+      - mongoconfig:/data/configdb
     networks:
-      - es-net
+      - mongo-compose-network 
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+        - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_PORT: 27017
+      MONGO_SERVER: climatempo_mongo
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+    links:
+      - mongo
+    networks:
+      - mongo-compose-network
     depends_on:
-      - elasticsearch
-    ports:
-      - 5601:5601
+      - mongo
   api:
     build: "./api"
     container_name: climatempo-api
@@ -28,9 +39,9 @@ services:
     volumes:
       - ./api:/home/node/app
     ports:
-      - "4002:4002"
+      - "8082:8082"
     depends_on:
-      - elasticsearch
+      - mongo-express
   app:
     build: "./app"
     container_name: climatempo-app
@@ -41,9 +52,9 @@ services:
       - "3000:3000"
     depends_on:
       - api
-networks:
-  es-net:
-    driver: bridge
-
 volumes:
-  elasticsearch-data:
+  mongodb:
+  mongoconfig:
+networks:
+  mongo-compose-network:
+    driver: bridge

@@ -8,12 +8,12 @@ import { IWeatherService } from "../../domain/service/iweatherService";
 export class WeatherController {
     constructor(@inject('IWeatherService') private weatherService:IWeatherService) {}
     async findByLocale(req:Request): Promise<Weather[]> {
-        const localeName = req.params.localName;
+        const localeName = req.params.localeName;
         return this.weatherService.findByLocale(localeName);
     }
     async findByDate(req:Request): Promise<Weather[]> {
-        const dateStart =  moment(req.params.dateStart, 'dd-MM-yyyy').format();
-        const dateEnd = moment(req.params.dateEnd, 'dd-MM-yyyy').format();
+        const dateStart =  req.params.dateStart;
+        const dateEnd = req.params.dateEnd;
         return this.weatherService.findByDate(dateStart, dateEnd);
     }
 }

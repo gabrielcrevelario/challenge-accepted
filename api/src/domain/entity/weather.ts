@@ -28,5 +28,20 @@ export interface Weather extends Document {
   locale?: Locale;
   weather?: [WeatherItem]
 }
-const WeatherSchema = new Schema<Weather>();
-export const WeatherMethods =  model('weather', WeatherSchema);
+const WeatherSchema = new Schema<Weather>({
+  period: { begin: String,
+  end: String },
+  locale: { id: Number,
+  name: String,
+  state: String,
+  latitude: Number,
+  longitude: Number},
+  weather: [{ id: Number,
+    date: String,
+    text: String,
+    temperature:  { min: Number,
+    max: Number},
+rain:   { probability: Number,
+    precipitation: Number}}]
+});
+export const WeatherMethods =  model('weather', WeatherSchema,'weather');
