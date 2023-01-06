@@ -11,8 +11,4 @@ const routers = Router().get('/weathers/locale-name/:localeName', async (req: Re
    const weathers = await weatherController.findByLocale(req);
    res.send(weathers);
 })
-.get('/weathers/range-date/:dateStart/:dateEnd', async (req: Request, res: Response) => {
-    const weathers = await weatherController.findByDate(req);
-    res.send(weathers);
-})
 export default routers;

@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fontsource/roboto": "^4.5.8",
     "@nestjs/apollo": "^10.1.7",
     "@nestjs/graphql": "^10.1.7",
     "apollo-server-express": "^3.11.1",
