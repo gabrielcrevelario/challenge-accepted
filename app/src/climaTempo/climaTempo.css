@@ -1,33 +1,95 @@
-.list-clima {
+.page-clima {
+    background-color: #e6f3fd;
+    height: 100vh;
+}
+
+.content-search {
+    height: 100px;
+    color: white;
+    width: 100%;
+    background-color: white;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    border-bottom: solid 2px #9d9d9d;
+
+}
+
+.content-search .MuiTextField-root {
+    margin: 0 20px;
+}
+
+.list-clima {
+    padding: 50px 20px;
+    display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .card {
-    width: 200px;
+    width: 24%;
     display: flex;
-    background: red;
+    background: #0080cd;
     flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 4px 3px 7px 0px #000000b8;
+    margin: 20px;
+}
+
+.card-header {
+    padding: 20px 0;
+}
+
+.card-header h4,
+p {
+    margin: 10px 0;
+}
+
+.card .card-container {
+    display: flex;
+    justify-content: space-between;
+    width: 94%;
+
 }
 
 .content-item {
-
     display: flex;
-    width: 50%;
-    justify-content: space-around;
     align-items: center;
-    height: 80px;
     flex-direction: column;
 }
 
 .content-item .item {
     display: flex;
-    flex-direction: column;
-    height: 60px;
-    width: 40%;
+    width: 80px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.card-container {
-    display: flex;
+.content-item .item h5,
+icon {
+    margin: 0;
+    padding: 0 20px;
+    font-size: 25px;
+}
+
+@media screen and (max-width:768px) {
+    .page-clima {
+        height: auto;
+    }
+
+    .list-clima {
+        flex-direction: column;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        padding: 40px 0;
+        align-items: center;
+        box-sizing: content-box;
+    }
+
+    .list-clima .card {
+        width: 80%;
+        margin: 20px 0;
+    }
 }

@@ -1,0 +1,32 @@
+nav {
+    height: 60px;
+    width: 100%;
+    background: #0080cd;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+img {
+    width: 140px;
+}
+
+nav button {
+    border-radius: 50%;
+    border: none;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 79%;
+    background: #4ca4ef;
+    z-index: 24;
+    color: white;
+    border: solid 2px #2682d1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
