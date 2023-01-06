@@ -14,4 +14,8 @@ export class WeatherController {
         const  weathers:Weather[] = await this.weatherService.findByLocale(localeName);
         return dateStart ? weathers.filter(x => x.period.begin === dateStart && x.period.end === dateEnd) : weathers;
     }
+    async findAll(): Promise<Weather[]> {
+        const  weathers:Weather[] = await this.weatherService.findAll();
+        return weathers
+    }
 }

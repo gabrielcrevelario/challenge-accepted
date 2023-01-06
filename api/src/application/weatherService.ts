@@ -8,8 +8,8 @@ export class WeatherService implements IWeatherService {
     async findByLocale(localeName: string): Promise<Weather[]> {
         return this.weatherRepository.findByLocale(localeName);
     }
-    async findByDate(dateStart: string, dateEnd: string): Promise<Weather[]> {
-        return this.weatherRepository.findByDate(dateStart, dateEnd);
+    async findAll(): Promise<Weather[]> {
+        return this.weatherRepository.findAll();
     }
 
 }

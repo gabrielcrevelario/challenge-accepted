@@ -11,6 +11,25 @@ nav {
     position: relative;
 }
 
+.switchContainer {
+
+    position: absolute;
+    left: 95%;
+    width: 200px px;
+    top: 50%;
+    transform: translate(-95%, -50%);
+    display: flex;
+    align-items: center;
+}
+
+nav .switchContainer span {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: roboto;
+    font-weight: 600;
+}
+
 img {
     width: 140px;
 }
@@ -29,4 +48,21 @@ nav button {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media screen and (max-width:768px) {
+    .switchContainer {
+
+        position: absolute;
+        left: 95%;
+        width: 200px;
+        top: 127%;
+        transform: translate(-44%, -50%);
+        display: flex;
+        align-items: center;
+    }
+
+    nav .switchContainer span {
+        color: #0080cd;
+    }
 }

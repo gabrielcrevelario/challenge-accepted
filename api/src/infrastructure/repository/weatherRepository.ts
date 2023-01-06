@@ -12,8 +12,8 @@ export class WeatherRepository implements IWeatherRepository {
             console.log(error);   
         }
     }
-    public async findByDate(dateStart: string, dateEnd: string): Promise<Weather[]> {
-        const weathers:Weather[] = await WeatherMethods.find({ 'period.begin':{$gte: dateStart }, 'period.end':{$lte: dateEnd}});
+    public async findAll(): Promise<Weather[]> {
+        const weathers:Weather[] = await WeatherMethods.find({});
         return weathers;
     }
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ClimaTempoPage from './climaTempo';
+import ClimaTempoPage from './pages/climaTempo';
 
 function App() {
   return (
